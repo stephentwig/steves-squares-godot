@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Sky" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0862745, 0.168627, 0.270588, 1)
+
+[node name="SunGlow" type="Polygon2D" parent="."]
+color = Color(0.980392, 0.705882, 0.317647, 0.18)
+polygon = PackedVector2Array(1030, 60, 1180, 60, 1240, 210, 1180, 360, 1030, 360, 880, 210)
+
+[node name="FarHill" type="Polygon2D" parent="."]
+color = Color(0.12549, 0.262745, 0.345098, 0.9)
+polygon = PackedVector2Array(0, 720, 160, 500, 360, 720)
+
+[node name="FarHill2" type="Polygon2D" parent="."]
+color = Color(0.12549, 0.262745, 0.345098, 0.9)
+polygon = PackedVector2Array(250, 720, 540, 420, 870, 720)
+
+[node name="FarHill3" type="Polygon2D" parent="."]
+color = Color(0.12549, 0.262745, 0.345098, 0.9)
+polygon = PackedVector2Array(740, 720, 1040, 450, 1280, 720)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(110, 600)
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(110, 600)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 500.0
+offset_bottom = 170.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD/MarginContainer"]
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer"]
+theme_override_font_sizes/font_size = 26
+text = "Square Collector"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer"]
+theme_override_font_sizes/font_size = 22
+text = "Score: 0"
+
+[node name="ControlsLabel" type="Label" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer"]
+text = "Move: arrows    Jump: Space or Up    Reset: R"
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer"]
+text = "Collect every glowing square."
